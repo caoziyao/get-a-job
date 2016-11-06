@@ -16,7 +16,7 @@ def get_job():
 
 def lagou_spider():
     try:
-        jd = LagouAPI.search('Python',city='深圳')
+        jd = LagouAPI.search('Python',city='全国')  #深圳
         for j in jd:
             info = LagouAPI.geo_info(j)
             print(info) 

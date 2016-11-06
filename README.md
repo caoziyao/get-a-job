@@ -15,6 +15,7 @@
 * 联系邮箱：wyzycao@gmail.com
 
 界面清新
+![platform](https://github.com/caoziyao/get-a-job/blob/master/static/img/2.PNG)  
 ![platform](https://github.com/caoziyao/get-a-job/blob/master/static/img/1.PNG)  
 
 安装

@@ -43,8 +43,8 @@ class LagouAPI(object):
                 # 获得页数
                 page_max = json_result['content']['positionResult']['totalCount']
                 # # 119 
-                if page_max > 10:
-                    page_max = 10
+                # if page_max > 10:
+                #     page_max = 10
                 print(page_max)
             # 用生成器返回得到的结果
             result = json_result['content']['positionResult']['result']

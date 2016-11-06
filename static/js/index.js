@@ -93,7 +93,7 @@ var geoPoint = function(data){
 
             });
 		}else{
-			alert("您选择地址没有解析到结果!");
+			// alert("您选择地址没有解析到结果!");
 		}
 	}, "深圳市");
 
