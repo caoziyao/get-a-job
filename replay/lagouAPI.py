@@ -1,12 +1,12 @@
 
-# from replay import *
+from replay import *
 
 import requests
 from bs4 import BeautifulSoup
 import urllib
 import json
 import time
-from utils import log
+from replay.utils import log
 
 class LagouAPI(object):
     LAGOU_GATEWAY = 'http://www.lagou.com/jobs/positionAjax.json?'
@@ -49,8 +49,8 @@ class LagouAPI(object):
             # 用生成器返回得到的结果
             result = json_result['content']['positionResult']['result']
             for j in result:
-                # yield j
-                cls.geo_worker(j)
+                yield j
+                # cls.geo_info(j)
             if page >= page_max:
                 break
             page += 1
@@ -83,26 +83,37 @@ class LagouAPI(object):
         # wb_data = requests.post(cls.jl_url, data=payload).text
         # print(wb_data)
         # print(json_result)
-    def geo_worker(j):
-        companyShortName = j['companyShortName']
-        # ctime = j['ctime']
-        financeStage = j['financeStage']
-        workYear = j['workYear']
-        createTime = j['createTime']
-        positionLables = j['positionLables']
-        salary = j['salary']
-        businessZones = j['businessZones']
-        city = j['city']
-        positionName = j['positionName']
-        district = j['district']
-        companyLabelList = j['companyLabelList']
-        positionAdvantage = j['positionAdvantage']
-        jobNature = j['jobNature']
-        companySize = j['companySize']
-        industryField = j['industryField']
-        formatCreateTime = j['formatCreateTime']
-        education = j['education']
-        companyFullName = j['companyFullName']
-        companyLogo = j['companyLogo']
-        positionId = j['positionId']
-        print(companyFullName, salary)
+    @classmethod
+    def geo_info(cls, j):
+        print('jj', j)
+        d = dict(
+            companyShortName = j['companyShortName'],
+            # ctime = j['ctime']
+            financeStage = j['financeStage'],
+            workYear = j['workYear'],
+            createTime = j['createTime'],
+            positionLables = j['positionLables'],
+            salary = j['salary'],
+            businessZones = j['businessZones'],
+            city = j['city'],
+            positionName = j['positionName'],
+            district = j['district'],
+            companyLabelList = j['companyLabelList'],
+            positionAdvantage = j['positionAdvantage'],
+            jobNature = j['jobNature'],
+            companySize = j['companySize'],
+            industryField = j['industryField'],
+            formatCreateTime = j['formatCreateTime'],
+            education = j['education'],
+            companyFullName = j['companyFullName'],
+            companyLogo = j['companyLogo'],
+            positionId = j['positionId'],
+            companyId = j['positionId'],
+        )
+        compURL = 'https://www.lagou.com/jobs/{}.html'.format(d['companyId'])
+        addr = cls.get_location_by_pos_id(d['positionId'])
+        d['addr'] = addr
+        d['compURL'] = compURL
+        time.sleep(0.5)
+        # print(addr, companyFullName, salary)
+        return d

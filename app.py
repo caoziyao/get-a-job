@@ -7,7 +7,7 @@ from models import db
 # 这里 import 具体的 Model 类是为了给 migrate 用
 # 如果不 import 那么无法迁移
 # 这是 SQLAlchemy 的机制
-from models.job import Job
+from models.job import JobModel
 from models.user import User
 
 from routes.job import main as routes_job
