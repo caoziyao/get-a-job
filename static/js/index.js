@@ -83,7 +83,7 @@ var geoPoint = function(data){
             <p>待遇：${salary}</p>
             <p>工作年限：${workYear}</p>
             <p>发布：${formatCreateTime}</p>
-            <p>来源：<a href='${compURL}'>拉勾</a></p>
+            <p>来源：<a href='${compURL}' target="_blank">拉勾</a></p>
             `
             
             var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
@@ -137,7 +137,7 @@ $(document).ready(function(){
     // addMarker()
     // 地址解析器
     // geoPoint()
-    
+
     // 在地图上添加标注
     apiGetJob();
 
