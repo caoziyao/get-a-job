@@ -10,7 +10,6 @@ import requests
 
 
 def get_job():
-
     pass
 
 
